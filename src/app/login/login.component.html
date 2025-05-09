@@ -1,0 +1,73 @@
+<div class="login-container">
+  <!-- Header -->
+  <header class="header">
+    <h1>Welcome to Angular Training</h1>
+  </header>
+  <div class="login-container">
+    <h4>Data from info-box component: </h4>
+    <p>{{sharedData}}</p>
+
+<h4>Alias Property:</h4>
+<p>{{aliasSharedData}}</p>
+<h4>Required Property:</h4> 
+<p>{{requiredData}}</p>
+<h4>Transformed Property:</h4> 
+<p>{{transformedData}}</p>
+</div>  
+<h2>Login Form</h2>
+
+  <!-- Child component used here -->
+  <app-info-box></app-info-box>
+
+  <!-- Login Form -->
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form" id="userForm">
+    <h2>Join our Angular Training!</h2>
+<div class="form-group">
+  <label for="userNameInput">User Name: </label>
+  <input
+  type="text"
+  id="userNameInput"
+  [(ngModel)]="userName"
+  placeholder="Enter your name"
+  class="input-field"
+  />
+  <p>Your name is: {{ userName }}</p>
+</div>
+    <div class="form-group">
+      <label for="nameInput">Name:</label>
+      <input 
+      type="text"
+      id="nameInput" 
+      [(ngModel)]="userName"
+      placeholder="Enter your name"
+      class="input-field"
+   />
+      <div *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched" style="color: red;">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="emailInput">Email:</label>
+      <input type="email" id="emailInput" formControlName="email" />
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" style="color: red;">
+        Valid email is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="passwordInput">Password:</label>
+      <input type="password" id="passwordInput" formControlName="password" />
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" style="color: red;">
+        Password is required.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid" class="btn-primary">Submit</button>
+  </form>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Angular Academy. All rights reserved.</p>
+  </footer>
+</div>

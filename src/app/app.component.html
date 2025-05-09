@@ -1,0 +1,14 @@
+  <main class="container">
+  <app-info-box [title] = "'Welcome to Angular Training'"
+    (close)="onInfoBoxClose">
+  </app-info-box>
+  <login-form [sharedData]="sharedData"
+   [aliasName]="'this is an alias property'"
+[requiredData]="'this is a required property'"  
+ [transformedData]="'this will be transformed'">
+ </login-form>
+</main>
+
+
+
+

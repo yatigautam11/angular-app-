@@ -1,0 +1,35 @@
+.info-box {
+    padding: 20px;
+    background: linear-gradient(135deg, #ffe6f0, #f7c8e0);
+    border: 2px solid #f5a9c4;
+    border-radius: 12px;
+    margin: 20px 0;
+    text-align: center;
+    color: #4a4a4a;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+    h2 {
+      font-size: 1.5rem;
+      color: #d63384;
+      margin-bottom: 10px;
+    }
+  
+    p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.5;
+    }
+  
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+  
+    .info-icon {
+      font-size: 2rem;
+      color: #d63384;
+      margin-bottom: 10px;
+    }
+  }

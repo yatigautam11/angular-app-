@@ -1,44 +1,29 @@
 import { Component, Input } from '@angular/core';
-import { FormsModule,FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { InfoBoxComponent } from '../info-box/info-box.component';  
-import { share } from 'rxjs';
+import { InfoBoxComponent } from '../info-box/info-box.component';
 
 @Component({
   selector: 'login-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, InfoBoxComponent,FormsModule],  
+  imports: [CommonModule, FormsModule, InfoBoxComponent],  // Only FormsModule needed for ngModel
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  @Input() sharedData: string = '';
-  ngOnChanges(){
-    console.log('Shared data in LoginComponent:', this.sharedData);
-  }
-  userName:string='';
-  @Input('aliasName') aliasSharedData: string = '';
-  @Input() requiredData!: string;
-
-  private _transformedData:string='';
-  @Input()
-  set transformedData(value:string){
-    this._transformedData=value.toUpperCase();
-  }
-  get transformedData():string{
-    return this._transformedData;
-  }
-  loginForm: FormGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required)
-  });
-
+  userName: string = '';
+  name: string = '';
+  email: string = '';
+  password: string = '';
 
   onSubmit() {
-    if (this.loginForm.valid) {
+    if (this.name && this.email && this.password) {
       alert('Form submitted successfully!');
-      console.log(this.loginForm.value);
+      console.log({
+        name: this.name,
+        email: this.email,
+        password: this.password
+      });
     } else {
       alert('Please fill out the form correctly.');
     }

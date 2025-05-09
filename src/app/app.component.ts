@@ -7,13 +7,12 @@ import { LoginComponent } from './login/login.component';
   imports: [InfoBoxComponent, LoginComponent],
   standalone: true,
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   sharedData: string = 'Shared data from AppComponent';
 
   updateSharedData(data: string) {
-    this.sharedData =data ;
     console.log('Data received in app component', data);
   this.sharedData = data;
   }

@@ -1,4 +1,12 @@
 /* General Container */
+:host {
+  display: block;
+  border: 2px solid #4caf50;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #501e1e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 .login-container {
     max-width: 400px;
     margin: 50px auto;
@@ -87,5 +95,8 @@
       background-color: #f8b6d2;
       cursor: not-allowed;
     }
+    h1, h2, h3, p {
+  font-family: 'Roboto', sans-serif;
+}
   }
   

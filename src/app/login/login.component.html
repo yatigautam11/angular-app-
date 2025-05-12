@@ -6,6 +6,16 @@
 
   <h2>Login Form</h2>
 
+  <h3>Features of Angular: </h3>
+  <ul>
+    <li *ngFor="let feature of features">
+      {{ feature }}</li>
+  </ul>
+
+  <p [ngClass]="{'highlight': isHighlighted}"[ngStyle]="{'color':isHighlighted ? 'blue' : 'black' }">
+    This text is conditionally styled.
+  </p>
+
   <!-- Login Form -->
   <form (ngSubmit)="onSubmit()" class="login-form" id="userForm">
     <h2>Join our Angular Training!</h2>
@@ -15,7 +25,7 @@
       <input
         type="text"
         id="userNameInput"
-        [(ngModel)]="userName"
+        [(ngModel)]="username"
         name="userName"
         placeholder="Enter your user name"
         class="input-field"
@@ -68,6 +78,8 @@
 
     <button type="submit" class="btn-primary">Submit</button>
   </form>
+
+  <p> {{greetingMessage}} </p>
 
   <!-- Footer -->
   <footer class="footer">

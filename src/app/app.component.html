@@ -1,8 +1,12 @@
   <main class="container">
   <app-info-box
+  #infoBoxRef
+[title]="'Welcome to ANGULAR TRAINING'"> 
    [title] = "'Welcome to Angular Training'"
-(dataChange)="updateSharedData($event)">
+(dataChange)="updateSharedData($event)" >
 </app-info-box>
+<!-- <h6 class="h1">WELCOME TO ANGULAR TRAINING</h6> -->
+<!-- button (ckick)="sendMessageToInfoBox(infoBoxRef)">Send Message</button> -->
 
   <login-form [sharedData]="sharedData">  </login-form>
    <login-form [aliasName]="'this is an alias property'"

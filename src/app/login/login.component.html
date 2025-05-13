@@ -1,7 +1,7 @@
 <div class="login-container">
   <!-- Header -->
   <header class="header">
-    <h1>Welcome to Angular Training</h1>
+    <h1 class="h1">Welcome to Angular Training</h1>
   </header>
 
   <h2>Login Form</h2>
@@ -12,12 +12,12 @@
       {{ feature }}</li>
   </ul>
 
-  <p [ngClass]="{'highlight': isHighlighted}"[ngStyle]="{'color':isHighlighted ? 'blue' : 'black' }">
+  <p [ngClass]="{'highlight': isHighlighted}" [ngStyle]="{'color':isHighlighted ? 'blue' : 'black' }">
     This text is conditionally styled.
   </p>
 
   <!-- Login Form -->
-  <form (ngSubmit)="onSubmit()" class="login-form" id="userForm">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" class="login-form" id="userForm">
     <h2>Join our Angular Training!</h2>
 
     <div class="form-group">
@@ -53,10 +53,11 @@
       <input
         type="email"
         id="emailInput"
-        [(ngModel)]="email"
+        #emailInputRef
         name="email"
         placeholder="Enter your email"
       />
+      <button (click)="focusEmail(emailInputRef)">Focus Email</button>
       <div *ngIf="!email && email !== ''" style="color: red;">
         Email is required.
       </div>
@@ -77,6 +78,7 @@
     </div>
 
     <button type="submit" class="btn-primary">Submit</button>
+    <button type="button" class="btn-secondary" (click)="resetForm(userForm)">Reset</button>
   </form>
 
   <!-- Footer -->

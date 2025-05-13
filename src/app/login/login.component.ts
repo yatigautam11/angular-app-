@@ -1,34 +1,27 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { InfoBoxComponent } from '../info-box/info-box.component';
 
 @Component({
   selector: 'login-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, InfoBoxComponent],  // Only FormsModule needed for ngModel
+  imports: [FormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
   userName: string = '';
   name: string = '';
   email: string = '';
   password: string = '';
+  isHighlighted: boolean = true;
+  features: string[] = ['Two-way data binding', 'Directives', 'Components'];
 
-isHighlighted: boolean =true;
-
-  features:string[]=['Two-way data binding', 'Property binding', 'Event binding', 'ngModel', 'ngIf', 'ngFor'];
-  
-  @Input() transformedData: string='';
-  @Input() requiredData!: string;
-  @Input() aliasName!: string;
-  @Input() sharedData: string = 'Shared data from AppComponent';
-  onSubmit() {
-    if (this.name && this.email && this.password) {
+  onSubmit(form: NgForm) {
+    if (form.valid) {
       alert('Form submitted successfully!');
       console.log({
+        userName: this.userName,
         name: this.name,
         email: this.email,
         password: this.password
@@ -36,5 +29,16 @@ isHighlighted: boolean =true;
     } else {
       alert('Please fill out the form correctly.');
     }
+  }
+
+  resetForm(form: NgForm) {
+    form.reset(); // Resets the form to its initial state
+    console.log('Form has been reset');
+  }
+
+  focusEmail(emailInput: HTMLInputElement) {
+    console.log('Email input focused', emailInput);
+    console.log('Email input value', emailInput.value);
+    emailInput.focus();
   }
 }

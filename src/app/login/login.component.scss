@@ -1,12 +1,11 @@
-/* General Container */
-:host {
-  display: block;
-  border: 2px solid #4caf50;
-  padding: 16px;
-  border-radius: 8px;
-  background-color: #501e1e;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+// :host {
+//   display: block;
+//   border: 2px solid #4caf50;
+//   padding: 16px;
+//   border-radius: 8px;
+//   background-color: #cb4f4f;
+//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+// }
 .login-container {
     max-width: 400px;
     margin: 50px auto;
@@ -23,10 +22,14 @@
     text-decoration: underline;
   }
   
+  // .header h1{
+  //   color: red !important;
+  // }
   /* Header */
   .header h1 {
     font-size: 28px;
-    color: #ff69b4;
+    //color: red !important;
+    //color: #ff69b4;
     margin-bottom: 10px;
   }
   
@@ -75,7 +78,6 @@
     }
   }
   
-  /* Cute Submit Button */
   .btn-primary {
     background-color: #ff69b4;
     color: white;

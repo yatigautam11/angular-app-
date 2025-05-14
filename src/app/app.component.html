@@ -1,21 +1,36 @@
-  <main class="container">
+<main class="container">
   <app-info-box
-  #infoBoxRef
-[title]="'Welcome to ANGULAR TRAINING'"> 
-   [title] = "'Welcome to Angular Training'"
-(dataChange)="updateSharedData($event)" >
-</app-info-box>
-<!-- <h6 class="h1">WELCOME TO ANGULAR TRAINING</h6> -->
-<!-- button (ckick)="sendMessageToInfoBox(infoBoxRef)">Send Message</button> -->
+    #infoBoxRef
+    [title]="'Welcome to ANGULAR TRAINING'"
+    (dataChange)="updateSharedData($event)">
+  </app-info-box>
 
-  <login-form [sharedData]="sharedData">  </login-form>
-   <login-form [aliasName]="'this is an alias property'"
-[requiredData]="'this is a required property'"  
- [transformedData]="'this will be transformed'">
- </login-form>
- 
+<div *ngIf="!isLoggedIn" class="login-form">
+    <h2>Login</h2>
+    <form (ngSubmit)="onLogin()">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" [(ngModel)]="username" name="username" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" [(ngModel)]="password" name="password" required />
+      </div>
+       <button type="submit" class="btn-primary">Login</button>
+    </form>
+  </div> 
+
+  <div *ngIf="isLoggedIn" class="user-list">
+    <h3>Welcome, {{ username }}!</h3>
+  <h3>User List</h3>
+  <div>
+    <user-card
+      *ngFor="let user of users"
+      [name]="user.name"
+      [id]="user.id"
+      [town]="user.town"
+      [picture]="user.picture">
+    </user-card>
+  </div>
+  </div>
 </main>
-
-
-
-

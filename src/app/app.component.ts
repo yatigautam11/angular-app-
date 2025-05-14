@@ -1,25 +1,36 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
+import { UserCardComponent } from './user-card/user-card.component';
 import { InfoBoxComponent } from './info-box/info-box.component';
-import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [InfoBoxComponent, LoginComponent],
   standalone: true,
+  imports: [CommonModule,UserCardComponent,FormsModule, InfoBoxComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  sharedData: string = 'Shared data from AppComponent';
+  isLoggedIn = false;
+   username = '';
+    password = '';
+  users = [
+    { name: 'Yati', id: 1, town: 'agra', picture: 'assets/images/cat.webp' },
+    { name: 'sarthak', id: 2, town: 'pratapgarh', picture: 'assets/images/dog.jpg' },
+    { name: 'santoshi', id: 3, town: 'delhi', picture: 'assets/images/panda.jpg' }
+  ];
 
-  // sendMessageToInfoBox(infoBox: InfoBoxComponent) {
-  //   infoBox.displayMessage('HELLO from AppComponent');
-  // sharedData: string = 'Shared data from AppComponent';
-  // }
+  
+  onLogin() {
+    if (this.username && this.password) {
+      this.isLoggedIn = true; // Set to true to show the user list
+    } else {
+      alert('Please enter valid credentials');
+    }
+  }
 
-  updateSharedData(data: string) {
-    console.log('Data received in app component', data);
-  this.sharedData = data;
+  updateSharedData(event: any) {
+    console.log('Data received from InfoBox:', event);
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  @ViewChild('emailInput') emailInputElement!: ElementRef
   userName: string = '';
   name: string = '';
   email: string = '';
@@ -37,8 +38,9 @@ export class LoginComponent {
   }
 
   focusEmail(emailInput: HTMLInputElement) {
-    console.log('Email input focused', emailInput);
-    console.log('Email input value', emailInput.value);
+    this.emailInputElement.nativeElement.focus();
+    console.log('Email input focused');// emailInput);
+    console.log('Email input value'); //emailInput.value);
     emailInput.focus();
   }
 }

@@ -1,5 +1,8 @@
 <div class="login-container">
-  <!-- Header -->
+  <div class="custom-header">
+    <ng-content></ng-content>
+  </div>
+
   <header class="header">
     <h1 class="h1">Welcome to Angular Training</h1>
   </header>
@@ -9,12 +12,9 @@
   <h3>Features of Angular: </h3>
   <ul>
     <li *ngFor="let feature of features">
-      {{ feature }}</li>
+      {{ feature }}
+    </li>
   </ul>
-
-  <!-- <p [ngClass]="{'highlight': isHighlighted}" [ngStyle]="{'color':isHighlighted ? 'blue' : 'black' }">
-    This text is conditionally styled.
-  </p> -->
 
   <!-- Login Form -->
   <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" class="login-form" id="userForm">
@@ -54,10 +54,11 @@
         type="email"
         id="emailInput"
         #emailInput
+        [(ngModel)]="email"
         name="email"
         placeholder="Enter your email"
       />
-      <button (click)="focusEmail(emailInput)">Focus Email</button>
+      <button #focus (click)="focusEmail(emailInput)">Focus Email</button>
       <div *ngIf="!email && email !== ''" style="color: red;">
         Email is required.
       </div>
@@ -81,23 +82,9 @@
     <button type="button" class="btn-secondary" (click)="resetForm(userForm)">Reset</button>
   </form>
 
-  <div class="login-form">
-  <h2>Login</h2>
-  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-    <div class="form-group">
-      <label for="username">Username:</label>
-      <input type="text" id="username" [(ngModel)]="userName" name="userName" required />
-    </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input type="password" id="password" [(ngModel)]="password" name="password" required />
-    </div>
-    <button type="submit" class="btn-primary">Login</button>
-  </form>
-</div>
-
   <!-- Footer -->
   <footer class="footer">
+    <ng-content select ="[footer]"></ng-content>
     <p>&copy; 2025 Angular Academy. All rights reserved.</p>
   </footer>
 </div>

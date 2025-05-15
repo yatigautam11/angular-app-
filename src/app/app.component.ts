@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { UserCardComponent } from './user-card/user-card.component';
 import { InfoBoxComponent } from './info-box/info-box.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,UserCardComponent,FormsModule, InfoBoxComponent],
+  imports: [LoginComponent,CommonModule,UserCardComponent,FormsModule, InfoBoxComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
+  @ViewChild('loginForm') loginFormComponent!: LoginComponent; 
   isLoggedIn = false;
    username = '';
     password = '';
@@ -30,7 +35,19 @@ export class AppComponent {
     }
   }
 
+  onLoginSuccess() {
+  this.isLoggedIn = true;
+  this.username = this.loginFormComponent.userName; // Access the username from LoginComponent
+  console.log('Login successful! Username:', this.username);
+}
+
   updateSharedData(event: any) {
     console.log('Data received from InfoBox:', event);
+  }
+
+  focusOnEmail() {
+    const emailInputValue = this.loginFormComponent.emailInputElement.nativeElement;
+    console.log('Email input value:', emailInputValue);
+    this.loginFormComponent.focusEmail(this.loginFormComponent.emailInputElement.nativeElement);
   }
 }

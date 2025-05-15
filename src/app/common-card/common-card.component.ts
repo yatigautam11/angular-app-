@@ -5,6 +5,9 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   template: `
     <div class="card">
+      <div class="badge">
+      <ng-content></ng-content> 
+    </div>
       <div class="card-content">
         <ng-content></ng-content> 
       </div>

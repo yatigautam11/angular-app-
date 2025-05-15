@@ -5,6 +5,24 @@
     (dataChange)="updateSharedData($event)">
   </app-info-box>
 
+   <login-form>
+    <h2 header #headerRef>Welcome to the Login Page</h2>
+    <p #projectedP>Please enter your credentials to log in.</p>
+  <p #projectedP>Angular is awesome!</p>
+    <div footer>
+    <p>Footer content goes here.</p>
+    </div>
+    </login-form>
+
+  <login-form
+    #loginForm
+    (loginSuccess)="onLoginSuccess()">
+    <h2>Another Login Form</h2>
+  <p>This is a secondary login form.</p>
+  </login-form>
+
+  <button (click)="focusOnEmail()">Focus on Email</button>
+
 <div *ngIf="!isLoggedIn" class="login-form">
     <h2>Login</h2>
     <form (ngSubmit)="onLogin()">
